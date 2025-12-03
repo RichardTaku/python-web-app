@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microservice App</title>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; margin: 0; }
+        .header { background: #007bff; color: white; padding: 20px; display: flex; justify-content: space-between; heigh: 30px; }
+        .buttons button { margin-left: 10px; padding: 8px 12px; }
+        .container { display: flex; padding: 20px; justify-content: center; align-items: center;}
+        .item { margin-right: 20px; text-align: center;}
+        .footer { background: #333; color: white; padding: 10px; }
+        .phone { color: orange;}
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>Welcome to Microservice App</h2>
+        <div class="buttons">
+            <button onclick="fetch('../book-flight').then(res=>res.json()).then(alert)">Book Flight</button>
+            <!--<button onclick="fetch('../hotel-reservation').then(res=>res.json()).then(alert)">Hotel Reservation</button>
+             <button onclick="fetch('../contact').then(res=>res.json()).then(alert)">Contact</button> -->
+             <button onclick="window.location.href='/hotel_reservation'">Hotel Reservation</button>
+            <button onclick="loadContact()">Contacts</button>
+            <button onclick="fetch('../about').then(res=>res.json()).then(alert)">About</button>
+        </div>
+    </div>
+
+    <div class="container">
+
+    <div class="item">
+        <img id="slideshow" src="/static/images/airplane.jpg" width="500" height="500">
+        <p id="caption">Flight Passing</p>
+    </div>
+
+</div>
+
+<script>
+    const images = [
+        { src: "/static/images/airplane.jpg", caption: "CAMAIR CO" },
+        { src: "/static/images/site1.jpg", caption: "Traditional House" },
+        { src: "/static/images/site2.jpg", caption: "Touristic View" }
+    ];
+
+    let index = 0;
+
+    function changeImage() {
+        index = (index + 1) % images.length;
+        document.getElementById("slideshow").src = images[index].src;
+        document.getElementById("caption").textContent = images[index].caption;
+    }
+
+    // Change every 3 seconds
+    setInterval(changeImage, 3000);
+</script>
+
+    <div class="footer" align="center">
+        <div> © 2025 Microservice App. All rights reserved.</div>
+        <div>
+            <h3>contact: <strong class="phone"> +237695099997 </strong> </h3> 
+        </div>
+        
+    </div>
+
+</body>
+</html>
+
