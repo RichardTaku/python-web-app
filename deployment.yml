@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-python-web-app-deployment
+  namespace: pythonwebapp
   labels:
     app:  python-web-app
 spec:
@@ -17,6 +18,7 @@ spec:
       containers:
       - name:  python-web-app
         image: richard92/my-python-app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
 

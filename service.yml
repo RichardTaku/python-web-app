@@ -2,7 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pythonwebapp
+  namespace: pythonwebapp
 spec:
+  type: ClusterIP
   selector:
     app: python-web-app
   ports:
