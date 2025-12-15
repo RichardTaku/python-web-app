@@ -5,7 +5,7 @@ metadata:
   namespace: pythonwebapp
 spec:
   rules:
-  - host: "foo.bar.com"
+  - host: foo.bar.com
     http:
       paths:
       - pathType: Prefix

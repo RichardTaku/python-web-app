@@ -4,7 +4,7 @@ metadata:
   name: my-python-web-app-deployment
   namespace: pythonwebapp
   labels:
-    app:  python-web-app
+    app: python-web-app
 spec:
   replicas: 1
   selector:
@@ -16,9 +16,20 @@ spec:
         app: python-web-app
     spec:
       containers:
-      - name:  python-web-app
-        image: richard92/my-python-app:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5000
+        - name: python-web-app
+          image: richard92/my-python-app:latest
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args:
+            - "-c"
+            - "while true; do echo hello; sleep 10; done"
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1m"
+            limits:
+              memory: "10Gi"
+              cpu: "500m"
 
