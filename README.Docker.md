@@ -1,22 +1,27 @@
 ### Building and running your application
 
-When you're ready, start your application by running:
-`docker compose up --build`.
+##Containerization with Docker
 
-Your application will be available at http://localhost:5000.
+This application is containerized using a production-ready Dockerfile, following security and performance best practices.
 
-### Deploying your application to the cloud
+🔑 Key Highlights
 
-First, build your image, e.g.: `docker build -t myapp .`.
-If your cloud uses a different CPU architecture than your development
-machine (e.g., you are on a Mac M1 and your cloud provider is amd64),
-you'll want to build the image for that platform, e.g.:
-`docker build --platform=linux/amd64 -t myapp .`.
+Uses Python 3.10 slim image for a smaller attack surface
 
-Then, push it to your registry, e.g. `docker push myregistry.com/myapp`.
+Runs as a non-root user for improved container security
 
-Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)
-docs for more detail on building and pushing.
+Installs dependencies efficiently using pip cache
 
-### References
-* [Docker's Python guide](https://docs.docker.com/language/python/)
+Exposes the application on port 5000
+
+Fully compatible with Kubernetes Deployment and Ingress
+*Full Dockerfile: Dockerfile
+
+#Build & Run Locally
+docker build -t my-python-app .
+docker run -p 5000:5000 my-python-app
+
+#Access the app in your browser:
+http://localhost:5000
+
+
